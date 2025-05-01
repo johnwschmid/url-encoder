@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_action :set_link, only: [:show]
   def index
     @links = Link.all
   end
@@ -9,6 +10,8 @@ class LinksController < ApplicationController
     else
       render :index, status: :unprocessable_entity
     end
+  end
+  def show
   end
   private
   def links_params

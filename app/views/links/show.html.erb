@@ -1,0 +1,2 @@
+<h4><%=@link.url%></h4>
+<%= line_chart @link.views.group_by_day(:created_at, range: 2.weeks.ago..Time.now, expand_range: true).count %>
