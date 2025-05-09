@@ -1,0 +1,8 @@
+<h4 class="text-2xl">Edit <%=@link.url%></h4>
+<%= render partial: 'form', locals:{link: @link} %>
+
+<div class='flex gap-2 mt-4 items-center'>
+<%= link_to 'Cancel', @link %>
+or
+<%= button_to 'Delete', @link, method: :delete, data: {turbo_confirm: 'Are you sure?'} %>
+</div>

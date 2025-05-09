@@ -1,2 +1,23 @@
-<h4><%=@link.url%></h4>
+<div class="flex justify-between">
+  <div class="text-xs">
+    <%= link_to "← Back to all links", links_path, class:"no-underline text-xs px-2 py-2 rounded bg-gray-300" %>
+  </div>
+  <div class="flex gap-6">
+    <%= pluralize(@link.views_count, 'view') %>
+    <%= link_to "Edit", edit_link_path(@link) %>
+  </div>
+</div>
+<h4 class="text-2xl mt-4">URL - <%=@link.url%></h4>
+<div>
+  <%= @link.desc %>
+</div>
+<%= link_to view_path(@link), target: :_blank, class:"ac no-underline text-xs px-2 py-1 rounded bg-gray-300", data: {turbo: false} do %>
+  <%= image_tag "https://www.google.com/s2/favicons?domain=#{@link.domain}", class: 'inline-block' %>
+  <%= @link.url %>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 inline-block ml-1 mb-1">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+  </svg>
+<% end %>
+<br>
+<br>
 <%= line_chart @link.views.group_by_day(:created_at, range: 2.weeks.ago..Time.now, expand_range: true).count %>

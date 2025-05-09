@@ -1,13 +1,6 @@
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+<h2 class="text-2xl px-2">URL Encoder</h2>
 
-<h2 class="text-2xl">URL Encoder</h2>
-<%= form_with model: Link.new do |f| %>
-  <div class="flex gap-2 items-center">
-    <%= f.url_field :url, class:'px-2 border rounded flex-grow', autofocus: true, placeholder: 'https://example.com' %>
-    <%= f.button 'Save', class:'bg-gray-200 px-2 rounded hover:bg-gray-400' %>
-  </div>
-<% end %>
-
-<%= render @links %>
+<%= render partial: 'form', locals: {link: @link} %>
+<div class="mt-4 px-2 flex flex-col divide-y divide-gray-200">
+  <%= render @links %>
+</div>

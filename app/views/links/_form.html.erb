@@ -1,0 +1,13 @@
+
+<%= form_with model: link do |f| %>
+  <div class="flex gap-2 items-center">
+    <%= f.url_field :url, class:'px-2 border rounded flex-grow', autofocus: true, placeholder: 'https://example.com' %>
+    <%= f.button 'Save', class:'bg-gray-200 px-2 rounded hover:bg-gray-400' %>
+  </div>
+    <%#= f.label :title %>
+    <%#= f.text_field :title, class:'px-2 border rounded flex-grow' %>
+    <%#= f.label :desc %>
+    <%#= f.text_field :desc, class:'px-2 border rounded flex-grow' %>
+    <%#= f.label :image %>
+    <%#= f.text_field :image, class:'px-2 border rounded flex-grow' %>
+<% end %>
