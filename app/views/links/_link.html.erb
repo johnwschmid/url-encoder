@@ -2,10 +2,10 @@
   <% turbo_stream_from link %>
   <div class="grid grid-cols-8 items-center py-3 px-2">
     <div class="col-span-5 pr-3">
-      <%= image_tag "https://www.google.com/s2/favicons?domain=#{link.domain}", class: 'inline-block' %>
-      <%= link_to link.title || link.url, link, class: "no-underline" %>
+      <%= image_tag "https://www.google.com/s2/favicons?domain=#{link.domain}", class: 'inline-block pb-1' %>
+      <%= link.title || link.url %>
       <%= link_to view_path(link), target: :_blank, data: {turbo: false} do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 inline-block ml-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline-block ml-2 pb-1">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
         </svg>
       <% end %>
@@ -13,11 +13,11 @@
         <%= link.desc %>
       </div>
     </div>
-    <div class="col-span-2">
-      <%= pluralize(link.views_count, 'view') %>
+    <div class="col-span-2 pl-5">
+      <%= link_to pluralize(link.views_count, 'view'), link, class: 'font-small text-black-400 text-xs bg-gray-200 px-2 py-1 rounded hover:bg-gray-400 no-underline' %>
     </div>
     <div class="col-span-1">
-      <%= link_to 'Copy', link, class: 'bg-gray-200 px-2 py-1 rounded hover:bg-gray-400 no-underline' %>
+      <%= button_tag 'Copy URL', class: 'font-small text-black-400 text-xs bg-gray-200 px-2 py-1 rounded hover:bg-gray-400 no-underline', data: {controller: 'clipboard', clipboard_text: view_url(link)} %>
     </div>
   </div>
 <% end %>
