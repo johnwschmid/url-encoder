@@ -17,7 +17,7 @@
       <%= link_to pluralize(link.views_count, 'view'), link, class: 'font-small text-black-400 text-xs bg-gray-200 px-2 py-1 rounded hover:bg-gray-400 no-underline' %>
     </div>
     <div class="col-span-1">
-      <%= button_tag 'Copy URL', class: 'font-small text-black-400 text-xs bg-gray-200 px-2 py-1 rounded hover:bg-gray-400 no-underline', data: {controller: 'clipboard', clipboard_text: view_url(link)} %>
+      <%= button_tag 'Copy URL', class: 'cursor-pointer font-small text-black-400 text-xs bg-gray-200 px-2 py-1 rounded hover:bg-gray-400 no-underline', data: {controller: 'clipboard', clipboard_text: view_url(link)} %>
     </div>
   </div>
 <% end %>

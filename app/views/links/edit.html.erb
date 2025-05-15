@@ -4,5 +4,5 @@
 <div class='flex gap-2 mt-4 items-center'>
 <%= link_to 'Cancel', @link %>
 or
-<%= button_to 'Delete', @link, method: :delete, data: {turbo_confirm: 'Are you sure?'} %>
+<%= button_to 'Delete', @link, method: :delete, data: {turbo_confirm: 'Are you sure?'}, class: 'cursor-pointer underline' %>
 </div>

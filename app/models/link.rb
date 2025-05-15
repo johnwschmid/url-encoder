@@ -25,4 +25,8 @@ class Link < ApplicationRecord
   def favicon_image_tag(url)
     "https://www.google.com/s2/favicons?domain=#{url}"
   end
+
+  def editable_by? curr_user
+    user_id.present? ? user_id == curr_user&.id : true
+  end
 end

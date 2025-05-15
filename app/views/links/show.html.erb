@@ -4,7 +4,7 @@
   </div>
   <div class="flex gap-6">
     <%= pluralize(@link.views_count, 'view') %>
-    <%= link_to "Edit", edit_link_path(@link) %>
+    <%= link_to "Edit", edit_link_path(@link) if @link.editable_by? current_user %>
   </div>
 </div>
 <h4 class="text-2xl mt-4">URL - <%=@link.url%></h4>

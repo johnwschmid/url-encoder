@@ -1,11 +1,13 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_editable, only: [:edit, :update, :destroy]
   def index
     @links = Link.all
     @link ||= Link.new
   end
   def create
     @link = Link.new(links_params)
+    @link.user = current_user
     if @link.save
       redirect_to root_path, notice: "Page was successfully created."
     else
@@ -31,5 +33,10 @@ class LinksController < ApplicationController
   private
   def links_params
     params.require(:link).permit(:url, :title, :description, :image, :view_count)
+  end
+  def check_if_editable
+    unless @link.editable_by?(current_user)
+      redirect_to root_path, alert: 'You cant do that'
+    end
   end
 end
