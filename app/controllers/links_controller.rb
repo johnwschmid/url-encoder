@@ -9,8 +9,12 @@ class LinksController < ApplicationController
     @link = Link.new(links_params)
     @link.user = current_user
     if @link.save
-      redirect_to root_path, notice: "Page was successfully created."
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "Page was successfully created." }
+        format.turbo_stream { render turbo_stream: turbo_stream.prepend("links", @link) }
+      end
     else
+      index
       render :index, status: :unprocessable_entity
     end
   end
@@ -36,7 +40,7 @@ class LinksController < ApplicationController
   end
   def check_if_editable
     unless @link.editable_by?(current_user)
-      redirect_to root_path, alert: 'You cant do that'
+      redirect_to @link, alert: 'You cant do that'
     end
   end
 end

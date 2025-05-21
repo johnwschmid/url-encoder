@@ -3,14 +3,19 @@
   <div class="grid grid-cols-8 items-center py-3 px-2">
     <div class="col-span-5 pr-3">
       <%= link_to view_path(link), target: :_blank, data: {turbo: false} do %>
-        <%= favicon_image_tag link.domain, class: 'inline-block pb-1' %>
+        <%= favicon_image_tag link.domain, class: 'inline-block pb-1 mr-2 mb-1 mt-1' %>
         <%= link.title || link.url %>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline-block ml-2 pb-1">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
         </svg>
       <% end %>
+      <div class="font-bold">
+        <% if link&.user&.email %>
+          Tracked by: <%= link&.user&.email %>
+        <% end %>
+      </div>
       <div>
-          <%= link.desc %>
+        <%= link.desc&.truncate(170) %>
       </div>
     </div>
     <div class="col-span-2 pl-5">
