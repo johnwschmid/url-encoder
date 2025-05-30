@@ -2,7 +2,7 @@ class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :check_if_editable, only: [:edit, :update, :destroy]
   def index
-    @links = Link.all
+    @pagy, @links = pagy Link.recent_first
     @link ||= Link.new
   end
   def create
