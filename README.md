@@ -1,24 +1,3 @@
-# README
+URL Encoder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This application monitors a collection of links chosen by its users, and tracks the number of times people viewed those links from our application. It encodes the URL with a custom Base62 class, in order to shorten potentially long links from social media websites, blog posts, etc. In addition to providing an external link to the website, each link has a show page with an infographic that displays all recent views. The website's title, description, image are retrieved via http request and displayed for the user as well. If you sign in only you can utilize CRUD operations on the link you created.
